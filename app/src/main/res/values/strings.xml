@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Checklist</string>
+    <string name="addButtonText">Добавить</string>
+    <string name="scanButtonText">Распознать</string>
+    <string name="nameText">Наименование</string>
+    <string name="productEditText">Редактирование продукта</string>
+    <string name="enterNameHint">Наименование</string>
+    <string name="returnButtonText">Отмена</string>
+    <string name="delButtonText">Удалить</string>
+    <string name="saveButtonText">Сохранить</string>
+    <string name="addProductText">Добавление продукта</string>
+    <string name="amountHint">Количество</string>
+    <string name="checklistText">Чек-лист покупок</string>
+    <string name="previewText">Предпросмотр фото</string>
+</resources>
