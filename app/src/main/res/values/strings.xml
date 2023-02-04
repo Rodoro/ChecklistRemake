@@ -12,4 +12,6 @@
     <string name="amountHint">Количество</string>
     <string name="checklistText">Чек-лист покупок</string>
     <string name="previewText">Предпросмотр фото</string>
+    <string name="summaryText">Стоимость:</string>
+    <string name="clearAmountText">Очистить</string>
 </resources>

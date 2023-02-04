@@ -11,13 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/checklistText"
+        android:textColor="?attr/colorOnSecondary"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/textBackgroundColor"/>
+        android:background="?attr/colorPrimary"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -30,7 +31,61 @@
         app:layout_constraintBottom_toTopOf="@id/buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"/>
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:background="@color/white"/>
+
+    <LinearLayout
+        android:id="@+id/summaryTab"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="1"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        android:orientation="horizontal"
+        android:background="@drawable/rectanglevariant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttons">
+
+        <Button
+            android:id="@+id/clearAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="bClearAmount"
+            android:text="@string/clearAmountText"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/summaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="25dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="0dp"
+            android:text="@string/summaryText"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/summaryAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -49,7 +104,8 @@
             android:onClick="bScanProduct"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/scanButtonText" />
+            android:text="@string/scanButtonText"
+            android:textColor="?attr/colorPrimaryVariant"/>
 
         <Button
             android:id="@+id/add"
@@ -58,7 +114,8 @@
             android:onClick="bAddProduct"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/addButtonText" />
+            android:text="@string/addButtonText"
+            android:textColor="?attr/colorPrimaryVariant"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
