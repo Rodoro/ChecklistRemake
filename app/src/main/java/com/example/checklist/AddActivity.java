@@ -44,7 +44,7 @@ public class AddActivity extends AppCompatActivity {
         }
     }
 
-    public void bCansel(View view){
+    public void bCancel(View view){
         goHome();
     }
 

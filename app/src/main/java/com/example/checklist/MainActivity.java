@@ -46,15 +46,7 @@ public class MainActivity extends AppCompatActivity {
         };
         ProductAdapter adapter = new ProductAdapter(this, products, productClickListener);
         recyclerView.setAdapter(adapter);
-
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{
-                            Manifest.permission.CAMERA
-                    },100);
-        }
+        initPermission();
     }
 
     public void bAddProduct(View view) {
@@ -66,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         String _path = Environment.getExternalStorageDirectory()
-                + File.separator + "TakenFromCamera.jpg";
+                + File.separator + "ImgScan.jpg";
         File file = new File(_path);
         Uri outputFileUri = Uri.fromFile(file);
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -78,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
-
-            String _path = Environment.getExternalStorageDirectory() +                File.separator + "TakenFromCamera.jpg";
+            String _path = Environment.getExternalStorageDirectory() + File.separator + "ImgScan.jpg";
             Intent intent = new Intent(this, PreviewActivity.class);
             intent.putExtra("img", _path);
             startActivity(intent);
@@ -92,5 +83,18 @@ public class MainActivity extends AppCompatActivity {
             products.add(new Product (i.getId(), i.getName(), i.getQuantity()));
         }
         adapter.close();
+    }
+
+    private void initPermission(){
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    },100);
+        }
     }
 }
