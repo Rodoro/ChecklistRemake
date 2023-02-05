@@ -56,7 +56,7 @@
             android:id="@+id/scan"
             android:text="@string/scanButtonText"
             android:textColor="?attr/colorPrimaryVariant"
-            android:onClick="bSaveProduct"
+            android:onClick="bScan"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,13 +18,16 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends AppCompatActivity {
-
+    private SharedPreferences pref;
     ArrayList<Product> products = new ArrayList<Product>();
     private DatabaseAdapter adapter;
 
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         adapter = new DatabaseAdapter(this);
+        pref = getSharedPreferences("MyPref", MODE_PRIVATE);
 
         setInitialData();
         RecyclerView recyclerView = findViewById(R.id.recycler);
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         ProductAdapter adapter = new ProductAdapter(this, products, productClickListener);
         recyclerView.setAdapter(adapter);
         initPermission();
+        getAmount();
     }
 
     public void bAddProduct(View view) {
@@ -95,6 +101,20 @@ public class MainActivity extends AppCompatActivity {
                             Manifest.permission.CAMERA,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE
                     },100);
+        }
+    }
+
+    public void bClearAmount(View view){
+        var editor = pref.edit();
+        editor.putString("summaryAmount", "0").apply();
+        getAmount();
+    }
+
+    private void getAmount(){
+        var amount = pref.getString("summaryAmount", "0");
+        if (amount != null) {
+            TextView editText = findViewById(R.id.summaryAmount);
+            editText.setText(amount);
         }
     }
 }
