@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="?attr/colorOnSurface">
 
     <TextView
         android:id="@+id/textView"
@@ -28,6 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
+        android:textColor="?attr/colorAccent"
         android:inputType="textNoSuggestions"
         android:hint="@string/enterNameHint"
         android:textColorHint="@color/halfBlack"
@@ -36,6 +37,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
+        android:textColor="?attr/colorAccent"
         android:id="@+id/editProductQuantity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

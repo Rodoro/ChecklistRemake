@@ -14,4 +14,5 @@
     <string name="previewText">Предпросмотр фото</string>
     <string name="summaryText">Стоимость:</string>
     <string name="clearAmountText">Очистить</string>
+    <string name="productSummaryText">Товаров:</string>
 </resources>

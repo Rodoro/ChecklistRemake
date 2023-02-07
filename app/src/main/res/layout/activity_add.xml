@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="?attr/colorOnSurface"
     tools:context=".AddActivity">
 
     <TextView
@@ -26,6 +26,7 @@
         android:id="@+id/editProductName"
         android:autofillHints=""
         android:inputType="textNoSuggestions"
+        android:textColor="?attr/colorAccent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/enterNameHint"
@@ -39,6 +40,7 @@
         android:autofillHints=""
         android:inputType="textNoSuggestions"
         android:layout_width="0dp"
+        android:textColor="?attr/colorAccent"
         android:layout_height="wrap_content"
         android:textColorHint="@color/halfBlack"
         android:hint="@string/amountHint"
