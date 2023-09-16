@@ -1,31 +1,37 @@
 package com.example.checklist;
 
-import android.Manifest;
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
 import android.graphics.Matrix;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.StrictMode;
-import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.FormatException;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Result;
+import com.google.zxing.common.HybridBinarizer;
+import com.google.zxing.qrcode.QRCodeReader;
+
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PreviewActivity extends AppCompatActivity {
@@ -33,7 +39,8 @@ public class PreviewActivity extends AppCompatActivity {
     ImageView imageView;
     Matrix matrix = new Matrix();
 
-    protected  void onCreate(Bundle savedInstanceState){
+
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
 
@@ -48,17 +55,66 @@ public class PreviewActivity extends AppCompatActivity {
         imageView.setImageBitmap(rotatedBitmap);
     }
 
-    public void bCancel(View view){
+    public void bCancel(View view) {
         goHome();
     }
 
-    public void bScan(View view){
-        var amount = pref.getString("summaryAmount", "0");
-        if (amount != null) {
-            var editor = pref.edit();
-            editor.putString("summaryAmount", Integer.toString(ThreadLocalRandom.current().nextInt(50, 200 + 1) + Integer.parseInt(amount))).apply();
-        }
+    public void bScan(View view) {
+        post();
         goHome();
+    }
+
+    private void post() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Result result = null;
+                String strRes = null;
+                try {
+                    String _path = Environment.getExternalStorageDirectory() + File.separator + "ImgScan.jpg";
+                    // Чтение изображения QR-кода из файла
+                    FileInputStream inputStream = new FileInputStream(_path);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    Bitmap resize = Bitmap.createScaledBitmap(bitmap, 200,200,false);
+                    int[] intArray = new int[resize.getWidth() * resize.getHeight()];
+                    resize.getPixels(intArray, 0, resize.getWidth(), 0, 0, resize.getWidth(), resize.getHeight());
+
+                    // Создание объекта BinaryBitmap
+                    int width = resize.getWidth();
+                    int height = resize.getHeight();
+                    RGBLuminanceSource source = new RGBLuminanceSource(width, height, intArray);
+                    BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+                    System.out.println(binaryBitmap);
+
+                    // Создание объекта QRCodeReader и сканирование QR-кода
+                    QRCodeReader reader = new QRCodeReader();
+                    result = reader.decode(binaryBitmap);
+                    System.out.println(result);
+
+                } catch (IOException | NotFoundException e) {
+                    e.printStackTrace();
+                } catch (ChecksumException e) {
+                    e.printStackTrace();
+                } catch (FormatException e) {
+                    e.printStackTrace();
+                }
+                int amountRes = 0;
+                String nameRes = null;
+                if (result != null){
+                    strRes = result.getText();
+                    amountRes = Integer.parseInt(strRes.split("amount=\"")[1].split("\"")[0]);
+                    nameRes = strRes.split("name=\"")[1].split("\"")[0];
+                }
+                var editor = pref.edit();
+                var amount = pref.getString("summaryAmount", "0");
+                if (amount != null) {
+                    editor.putString("summaryAmount", Integer.toString(amountRes + Integer.parseInt(amount))).apply();
+                }
+                editor.putString("productScanner", nameRes);
+                System.out.println(amountRes);
+                System.out.println(nameRes);
+            }
+        }).start();
     }
 
     private void goHome(){

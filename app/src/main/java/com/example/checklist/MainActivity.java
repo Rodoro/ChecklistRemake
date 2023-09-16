@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         adapter = new DatabaseAdapter(this);
         pref = getSharedPreferences("MyPref", MODE_PRIVATE);
 
+        var editor = pref.edit();
+        var nameProduct = pref.getString("productScanner", "0");
+        if(nameProduct != "0" || nameProduct != null){
+            editor.putString("summaryAmount", "0").apply();
+            adapter.deleteByName(nameProduct);
+        }
+
         setInitialData();
         RecyclerView recyclerView = findViewById(R.id.recycler);
         ProductAdapter.OnProductClickListener productClickListener = new ProductAdapter.OnProductClickListener() {

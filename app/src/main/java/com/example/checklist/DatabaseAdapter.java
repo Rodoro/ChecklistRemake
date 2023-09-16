@@ -76,6 +76,13 @@ public class DatabaseAdapter {
         return database.delete(DatabaseHelper.TABLE, whereClause, whereArgs);
     }
 
+    public long deleteByName(String productName){
+
+        String whereClause = "name = ?";
+        String[] whereArgs = new String[]{String.valueOf(productName)};
+        return database.delete(DatabaseHelper.TABLE, whereClause, whereArgs);
+    }
+
     public long update(Product product){
 
         String whereClause = DatabaseHelper.COLUMN_ID + "=" + product.getId();
