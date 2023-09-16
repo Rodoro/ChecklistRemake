@@ -41,9 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
         var editor = pref.edit();
         var nameProduct = pref.getString("productScanner", "0");
-        if(nameProduct != "0" || nameProduct != null){
-            editor.putString("summaryAmount", "0").apply();
+        System.out.println(1);
+        System.out.println(nameProduct);
+        if(nameProduct != "0"){
+            editor.putString("productScanner", "0").apply();
+            adapter.open();
             adapter.deleteByName(nameProduct);
+            adapter.close();
+        }else{
+            Toast.makeText(this, "QR код не распознан", Toast.LENGTH_LONG).show();
         }
 
         setInitialData();

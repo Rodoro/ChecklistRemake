@@ -61,11 +61,11 @@ public class PreviewActivity extends AppCompatActivity {
 
     public void bScan(View view) {
         post();
-        goHome();
+        //goHome();
     }
 
     private void post() {
-        new Thread(new Runnable() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 Result result = null;
@@ -110,11 +110,18 @@ public class PreviewActivity extends AppCompatActivity {
                 if (amount != null) {
                     editor.putString("summaryAmount", Integer.toString(amountRes + Integer.parseInt(amount))).apply();
                 }
-                editor.putString("productScanner", nameRes);
+                editor.putString("productScanner", nameRes).apply();
                 System.out.println(amountRes);
                 System.out.println(nameRes);
             }
-        }).start();
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        goHome();
     }
 
     private void goHome(){
