@@ -28,6 +28,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends AppCompatActivity {
     private SharedPreferences pref;
+
     ArrayList<Product> products = new ArrayList<Product>();
     private DatabaseAdapter adapter;
 

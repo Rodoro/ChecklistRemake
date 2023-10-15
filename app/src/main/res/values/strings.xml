@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Checklist</string>
+    <string name="app_name">Imperium</string>
     <string name="addButtonText">Добавить</string>
     <string name="scanButtonText">Распознать</string>
     <string name="nameText">Наименование</string>

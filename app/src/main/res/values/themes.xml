@@ -3,14 +3,15 @@
     <style name="Theme.Checklist" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#42A5F5</item>
-        <item name="colorPrimaryVariant">#1565C0</item>
+        <item name="colorPrimaryVariant">#FF4F00</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#3949AB</item>
         <item name="colorSecondaryVariant">#311B92</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#64B5F6</item>
+        <item name="android:statusBarColor">#fff17a0a</item>
+        <item name="android:navigationBarColor">#2B2B2B</item>
         <!-- Customize your theme here. -->
         <item name="colorOnSurface">#FFFFFF</item>
         <item name="colorAccent">#000000</item>

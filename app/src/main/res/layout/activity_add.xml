@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnSurface"
+    android:background="#2B2B2B"
     tools:context=".AddActivity">
 
     <TextView
@@ -20,30 +20,30 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="?attr/colorPrimary"/>
+        android:background="#FF4F00"/>
 
     <EditText
         android:id="@+id/editProductName"
-        android:autofillHints=""
-        android:inputType="textNoSuggestions"
-        android:textColor="?attr/colorAccent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:hint="@string/enterNameHint"
-        android:textColorHint="@color/halfBlack"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:inputType="textNoSuggestions"
+        android:textColor="?attr/colorOnSecondary"
+        android:textColorHint="@color/colorBackgroundLight"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
         android:id="@+id/editProductQuantity"
-        android:autofillHints=""
-        android:inputType="textNoSuggestions"
         android:layout_width="0dp"
-        android:textColor="?attr/colorAccent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/halfBlack"
+        android:autofillHints=""
         android:hint="@string/amountHint"
+        android:inputType="textNoSuggestions"
+        android:textColor="?attr/colorOnSecondary"
+        android:textColorHint="@color/colorBackgroundLight"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -61,8 +61,9 @@
         <Button
             android:id="@+id/cancel"
             android:text="@string/returnButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
             style="?android:attr/buttonBarButtonStyle"
+            android:backgroundTint="#FF4F00"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,7 +72,8 @@
         <Button
             android:id="@+id/save"
             android:text="@string/saveButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="#FF4F00"
             android:onClick="bSaveProduct"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"

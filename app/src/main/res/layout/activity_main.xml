@@ -10,42 +10,26 @@
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/checklistText"
-        android:textColor="?attr/colorOnSecondary"
+        android:background="#FF4F00"
+        android:text="Imperium"
         android:textAlignment="center"
+        android:textColor="?attr/colorOnSecondary"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="?attr/colorPrimary"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/productAmount"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:text="@string/productSummaryText"
-        android:textAlignment="textEnd"
+        android:background="#FF4F00"
+        android:text="Товары"
+        android:textAlignment="center"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintWidth_percent="0.5" />
-
-    <TextView
-        android:id="@+id/productAmountNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:paddingStart="20sp"
-        android:paddingEnd="0sp"
-        android:text="0"
-        android:textAlignment="textStart"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintWidth_percent="0.5" />
 
@@ -53,7 +37,7 @@
         android:id="@+id/recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="?attr/colorOnSurface"
+        android:background="#2B2B2B"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:paddingVertical="8dp"
@@ -67,23 +51,24 @@
     <LinearLayout
         android:id="@+id/summaryTab"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="1"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.05"
+        android:background="#FF5722"
         android:orientation="horizontal"
-        android:background="@drawable/rectanglevariant"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/buttons">
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintWidth_percent="1">
 
         <Button
             android:id="@+id/clearAmount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#fff17a0a"
             android:onClick="bClearAmount"
             android:text="@string/clearAmountText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="@color/colorBackgroundLight"
             android:textSize="12sp" />
 
         <TextView
@@ -94,7 +79,7 @@
             android:paddingTop="5dp"
             android:paddingEnd="20dp"
             android:paddingBottom="0dp"
-            android:text="@string/summaryText"
+            android:text="Количество:"
             android:textColor="?attr/colorOnSecondary"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -112,9 +97,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
     <LinearLayout
@@ -131,21 +116,27 @@
             android:id="@+id/scan"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:onClick="bScanProduct"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#2B2B2B"
+            android:onClick="bScanProduct"
             android:text="@string/scanButtonText"
-            android:textColor="?attr/colorPrimaryVariant"/>
+            android:textColor="@color/colorBackgroundLight"
+            app:strokeColor="#2B2B2B"
+            app:strokeWidth="90dp" />
 
         <Button
             android:id="@+id/add"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:onClick="bAddProduct"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:backgroundTint="#2B2B2B"
+            android:onClick="bAddProduct"
             android:text="@string/addButtonText"
-            android:textColor="?attr/colorPrimaryVariant"/>
+            android:textColor="@color/colorBackgroundLight"
+            app:strokeColor="#2B2B2B"
+            app:strokeWidth="90dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnSurface">
+    android:background="#2B2B2B">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#FF4F00"
         android:fontFamily="sans-serif"
         android:text="@string/productEditText"
         android:textColor="?attr/colorOnSecondary"
@@ -28,23 +28,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:textColor="?attr/colorAccent"
-        android:inputType="textNoSuggestions"
         android:hint="@string/enterNameHint"
-        android:textColorHint="@color/halfBlack"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:inputType="textNoSuggestions"
+        android:textColor="?attr/colorOnSecondary"
+        android:textColorHint="?attr/colorOnSecondary"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:textColor="?attr/colorAccent"
         android:id="@+id/editProductQuantity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/amountHint"
-        android:textColorHint="@color/halfBlack"
         android:autofillHints=""
+        android:hint="@string/amountHint"
         android:inputType="textNoSuggestions"
+        android:textColor="?attr/colorOnSecondary"
+        android:textColorHint="?attr/colorOnSecondary"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -62,7 +62,8 @@
         <Button
             android:id="@+id/cancel"
             android:text="@string/returnButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="#FF4F00"
             android:onClick="bCancel"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
@@ -76,13 +77,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/delButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="#FF4F00"
             android:onClick="bRemoveProduct" />
 
         <Button
             android:id="@+id/save"
             android:text="@string/saveButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="#FF4F00"
             android:onClick="bSaveProduct"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"

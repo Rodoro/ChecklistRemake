@@ -13,7 +13,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/rectangle"
+        android:background="#FF4F00"
         android:paddingStart="15dp"
         android:paddingTop="5dp"
         android:paddingEnd="15dp"

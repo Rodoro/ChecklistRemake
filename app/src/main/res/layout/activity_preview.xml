@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorOnSurface">
+    android:background="#2B2B2B">
     <TextView
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="#FF4F00"
         android:fontFamily="sans-serif"
         android:text="@string/previewText"
         android:textAlignment="center"
@@ -45,7 +45,8 @@
         <Button
             android:id="@+id/cancel"
             android:text="@string/returnButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="#FF4F00"
             android:onClick="bCancel"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
@@ -55,7 +56,8 @@
         <Button
             android:id="@+id/scan"
             android:text="@string/scanButtonText"
-            android:textColor="?attr/colorPrimaryVariant"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="#FF4F00"
             android:onClick="bScan"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
