@@ -76,6 +76,11 @@ public class DatabaseAdapter {
         return database.delete(DatabaseHelper.TABLE, whereClause, whereArgs);
     }
 
+    public void deleteAllData() {
+        String query = "DELETE FROM " + DatabaseHelper.TABLE;
+        database.execSQL(query);
+    }
+
     public long deleteByName(String productName){
 
         String whereClause = "name = ?";
